@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Estudiante;
 
 class estudianteController extends Controller
 {
@@ -13,7 +14,10 @@ class estudianteController extends Controller
      */
     public function index()
     {
-        //
+        $estudiantes = Estudiante::all();
+       // return view('/layouts/estudiante/formulario');
+        return view('menu', compact('estudiantes'));
+
     }
 
     /**
@@ -23,7 +27,7 @@ class estudianteController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**
@@ -45,7 +49,7 @@ class estudianteController extends Controller
      */
     public function show($id)
     {
-        //
+        return "Eeste es el muestra del methodo yayaya";
     }
 
     /**
