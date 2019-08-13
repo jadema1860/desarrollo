@@ -15,14 +15,8 @@
           </tr>
         </thead>
         <tbody>
-          @foreach($estudiantes as $estudiante)
-          <tr>
-            <td>{{$estudiante->id}}</td>
-            <td>{{$estudiante->numeroIdentificacion}}</td>
-            <td>{{$estudiante->codigoMatricula}}</td>
-          </tr>
-          @endforeach
-
+       
+        
         </tbody>
       </table>
 

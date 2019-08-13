@@ -31,6 +31,7 @@ class CreateEstudiantesTable extends Migration
             $table->date('fechaEgreso');
             $table->integer('acta');
             $table->integer('folio');
+            $table->string('foto');
             $table->timestamps();
         });
     }

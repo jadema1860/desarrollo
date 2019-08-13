@@ -4,8 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Estudiante;
-
-class estudianteController extends Controller
+class StudentController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,11 +13,9 @@ class estudianteController extends Controller
      */
     public function index()
     {
-        $estudiante = Estudiante::all();
+        $student = Estudiante::all();
         
-       // return view('/layouts/estudiante/formulario');
-        return view('menu', compact('$control'));
-
+        return view('student.index', compact('student'));
     }
 
     /**
@@ -28,7 +25,7 @@ class estudianteController extends Controller
      */
     public function create()
     {
-        
+        return view('student.create');
     }
 
     /**
@@ -39,7 +36,18 @@ class estudianteController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        if($request->hasFile('foto')){
+            $file = $request->file('foto');
+            $name=time().$file->getClientOriginalName();
+            $file->move(public_path().'/images/',$name);
+            //return $name;
+        }
+       // return $request;
+         $e = new Estudiante();
+         $e->numeroIdentificacion = $request->numeroIdentificacion;
+         $e->foto = $name;
+         $e->save();
+         return redirect('/student/');
     }
 
     /**
@@ -50,7 +58,7 @@ class estudianteController extends Controller
      */
     public function show($id)
     {
-        return "Eeste es el muestra del methodo yayaya";
+        //
     }
 
     /**

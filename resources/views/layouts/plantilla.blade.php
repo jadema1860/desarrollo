@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title></title>
+        <title>Essc @yield('title') </title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="css/style.css" rel="stylesheet">
@@ -24,7 +24,7 @@
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" href="#">Agregar Estudiantes</a>
           <a class="dropdown-item" href="#">Buscar Estudiantes</a>
-          <a class="dropdown-item" href="{{route('estudiante.index')}}">Temporal Estudiantes</a>
+          <a class="dropdown-item" href="#">Temporal Estudiantes</a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="#">Otras Configuraciones</a>
         </div>
