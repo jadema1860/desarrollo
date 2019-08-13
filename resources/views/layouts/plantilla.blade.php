@@ -22,8 +22,8 @@
           Estudiantes
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Agregar Estudiantes</a>
-          <a class="dropdown-item" href="#">Buscar Estudiantes</a>
+          <a class="dropdown-item" href="{{ Route('student.create')}}">Agregar Estudiantes</a>
+          <a class="dropdown-item" href="{{ Route('student.index')}}">Buscar Estudiantes</a>
           <a class="dropdown-item" href="#">Temporal Estudiantes</a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="#">Otras Configuraciones</a>

@@ -58,7 +58,10 @@ class StudentController extends Controller
      */
     public function show($id)
     {
-        //
+       /// return "respondiendo desde".$id;
+       $student=Estudiante::find($id);
+      //return $student;
+       return view('student.show', compact('student'));
     }
 
     /**

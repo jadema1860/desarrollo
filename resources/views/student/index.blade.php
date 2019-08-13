@@ -4,17 +4,28 @@
 @section('content')
 <div class="container">
         <p>Listado de estudiantes</p>
-        <table>
-            <tr>
-                <th>Nombre</th>
-            </tr>
 
-        @foreach ($student as $est)
-            <tr>
-                <td>{{$est->numeroIdentificacion }}</td><td><img src="images/{{$est->foto}}"></td>
-            </tr>
-        @endforeach
-         </table>
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Nombre</th>
+      <th scope="col">Fotografia</th>
+      <th scope="col">Detalle</th>
+      <th scope="col">Editar</th>
+    </tr>
+  </thead>
+  <tbody>
+  @foreach ($student as $est)
+    <tr>
+      <th scope="row">{{$est->numeroIdentificacion }}</th>
+      <td><img class="img-thumbnail" src="images/{{$est->foto}}"></td>
+      <td><a href="/student/{{$est->id}}" class="btn btn-warning">Detalle</a></td>
+      <td><button class="btn btn-warning">Editar</button></td>
+    </tr>
+  @endforeach
+  </tbody>
+</table>
+
 </div>
 @endsection
 
