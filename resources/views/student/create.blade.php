@@ -2,6 +2,7 @@
 @section('title','Menu Principal')
 
 @section('content')
+<script src="/js/municipios.js"></script>
 <div class="container">
     <form action="/student" class="form-group" method="POST" enctype="multipart/form-data">
      @csrf
@@ -28,6 +29,23 @@
         <input type="password" class="form-control" name="password" id="password" placeholder="Password">
     </div>
 
+    <div class="form-group">   
+         <label for="departamento">Departamento</label>
+         <select class="form-control" name="departamento_id" id="departamento_id">
+            @foreach ($departamento as $d)
+                <option value="{{$d->id}}">{{$d->departamento}}</option>
+            @endforeach
+           
+         </select> 
+    </div>
+
+     <div class="form-group">   
+         <label for="Municipio">Municipio</label>
+         <select class="form-control" name="municipio_id" id="municipio_id" placeholder="Selecciona Municipio">
+          
+           
+         </select> 
+    </div>
     <div class="form-group">
         <label for="foto">Foto</label>
         <input type="file" class="form-control" name="foto">

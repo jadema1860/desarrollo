@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Estudiante;
+use App\departamento;
+use App\municipio;
 class StudentController extends Controller
 {
     /**
@@ -14,7 +16,7 @@ class StudentController extends Controller
     public function index()
     {
         $student = Estudiante::all();
-        
+       
         return view('student.index', compact('student'));
     }
 
@@ -25,7 +27,8 @@ class StudentController extends Controller
      */
     public function create()
     {
-        return view('student.create');
+        $departamento=departamento::all();
+        return view('student.create', compact('departamento'));
     }
 
     /**
@@ -63,6 +66,24 @@ class StudentController extends Controller
       //return $student;
        return view('student.show', compact('student'));
     }
+
+    public function mostrar(Request $request, $id){
+
+        if($request->ajax()){
+            $municipios=municipio::municipios($id);
+            return response()->json($municipios);
+        }
+       // return "responde desde mostrar".$id;
+    }
+
+        /*
+    public function getMunicipios(Request $request, $id){
+        if($request->ajax()){
+            $municipios=municipio::municipios($id);
+            return response()->json($municipios);
+        }
+
+    }*/
 
     /**
      * Show the form for editing the specified resource.

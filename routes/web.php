@@ -21,3 +21,5 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/menu', 'HomeController@menu')->name('menu');
 
 Route::resource('student','studentController');
+//Route::resource('departamentos','departamentosController');
+Route::get('/municipios/{id}','studentController@mostrar');
