@@ -1,6 +1,12 @@
 
 $(document).ready(function() {
-
+    
+    var f = new Date();
+   
+   var fechaNacimiento = f.getFullYear()+"-"+"08" + "-" + f.getDate() ;
+  
+  //  $('#fechaNacimiento').value(f.getDate() + "/" + (f.getMonth() +1) + "/" + f.getFullYear()); 
+  $('#fechaNacimiento').val(fechaNacimiento);
     id=$("#depaNacimiento_id ").val();
     $.get('/municipios/'+id,function(data){
     //console.log(data.length);     

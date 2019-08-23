@@ -1,5 +1,10 @@
 $(document).ready(function() {
   
+  $('#myModal').on('shown.bs.modal', function () {
+  $('#fechaNacimiento').val(Date());    
+  $('#myInput').trigger('focus')
+})
+
    id_doc=$("#documento_id_text").val();
       
    $.get('/documentos/'+1,function(data){

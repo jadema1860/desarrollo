@@ -11,7 +11,6 @@
         <label for="name">Documento</label>
         <input type="number" class="form-control" 
         name="documento"  id="documento" aria-describedby="emailHelp" placeholder="Cédula de Ciudadanía">
-        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
     </div>
 
      <div class="form-group">   
@@ -27,13 +26,11 @@
         <label for="name">Nombres</label>
         <input type="text" class="form-control" 
         name="nombres"  id="nombres" aria-describedby="emailHelp" placeholder="Nombres Estudiante">
-        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
     </div>
 
      <div class="form-group">
         <label for="lastname">Apellidos</label>
         <input type="text" class="form-control" name="apellidos" id="apellidos" aria-describedby="emailHelp" placeholder="Apellidos Estudiante">
-        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
     </div>
 
     <div class="form-group">   

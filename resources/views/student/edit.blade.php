@@ -48,14 +48,39 @@
     </div>
 
         <button type="submit" class="btn btn-primary">Actualizar</button>
-    
+        
     </form>
 
-    <form action="/student/{{$student->id}}" class="form-group" method="POST" enctype="multipart/form-data">
-        {{ csrf_field() }}
-        @method('DELETE')
-        <button type="submit" class="btn btn-danger">Eliminar</button>
-    </form>
+    <button type="submit" class="btn btn-danger" data-toggle="modal" data-target="#exampleModalLong">Eliminar</button>
 
+</div>
+
+<!-- Button trigger modal -->
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Eliminar Estudiante</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <form id="delete" action="/student/{{$student->id}}" class="form-group" method="POST" enctype="multipart/form-data">
+            <div class="modal-body">
+              {{ csrf_field() }}
+              @method('DELETE')
+                 Realmente desea <strong class="text text-danger">eliminar</strong> al estudiante: <b> {{$student->apellidos}}  {{$student->nombres}} </b> ?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                <button type="submit" class="btn btn-danger" data-toggle="modal" data-target="#exampleModalLong">Eliminar</button>
+            </div>
+       </form>
+    </div>
+  </div>
 </div>
 @endsection
