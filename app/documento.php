@@ -9,7 +9,7 @@ class documento extends Model
     public function estudiantes()
     {
         //return $this->hasMany('App\Estudiante');
-        return $this->hasMany('App\Estudiante', 'documento_id', 'id');
+     //   return $this->hasMany('App\Estudiante', 'documento_id', 'id');
     }
 /*
     public static function documentos($id){

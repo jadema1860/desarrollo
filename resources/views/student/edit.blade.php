@@ -11,12 +11,11 @@
      <div class="form-group">
         <label for="name">Documento</label>
         <input type="number" class="form-control" 
-        name="documento"  id="documento" aria-describedby="emailHelp" placeholder="Cédula de Ciudadanía" value="{{ $student->documento}}">
-        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+        name="documento"  id="documento" aria-describedby="emailHelp" placeholder="Cédula de Ciudadanía" value="{{$student->documento}}">
     </div>
 
     <div class="form-group">   
-         <input type="hidden" id="valor" value="{{$student->documento_id}}" />
+         <input type="hidden" id="documento_id_text" value="{{$student->documento_id}}" />
          <label for="departamento">Tipo Documento</label>
          <select class="form-control" name="documento_id" id="documento_id">
            
