@@ -47,7 +47,15 @@
          </select> 
     </div>
 
-    <button type="submit" class="btn btn-primary">Actualizar</button>
+        <button type="submit" class="btn btn-primary">Actualizar</button>
+    
     </form>
+
+    <form action="/student/{{$student->id}}" class="form-group" method="POST" enctype="multipart/form-data">
+        {{ csrf_field() }}
+        @method('DELETE')
+        <button type="submit" class="btn btn-danger">Eliminar</button>
+    </form>
+
 </div>
 @endsection
