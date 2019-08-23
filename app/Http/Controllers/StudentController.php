@@ -6,6 +6,10 @@ use Illuminate\Http\Request;
 use App\Estudiante;
 use App\departamento;
 use App\municipio;
+use App\documento;
+use App\genero;
+
+
 class StudentController extends Controller
 {
     /**
@@ -13,6 +17,8 @@ class StudentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+
     public function index()
     {
         $student = Estudiante::all();
@@ -28,7 +34,9 @@ class StudentController extends Controller
     public function create()
     {
         $departamento=departamento::all();
-        return view('student.create', compact('departamento'));
+        $genero=genero::all();
+        $documento=documento::all();
+        return view('student.create', compact('departamento','documento','genero'));
     }
 
     /**
@@ -39,15 +47,25 @@ class StudentController extends Controller
      */
     public function store(Request $request)
     {
-        if($request->hasFile('foto')){
+       if($request->hasFile('foto')){
             $file = $request->file('foto');
             $name=time().$file->getClientOriginalName();
             $file->move(public_path().'/images/',$name);
             //return $name;
+        }else{
+            //return "sinfoto.jpg";
+            $name="sinfoto.jpg";
         }
-       // return $request;
          $e = new Estudiante();
-         $e->numeroIdentificacion = $request->numeroIdentificacion;
+         $e->documento = $request->documento;
+         $e->nombres = $request->nombres;
+         $e->apellidos = $request->apellidos;
+         $e->genero_id = $request->genero_id;
+         $e->documento = $request->documento;
+         $e->documento_id = $request->documento_id;
+         $e->fechaNacimiento = $request->fechaNacimiento;
+         $e->depaNacimiento_id = $request->depaNacimiento_id;
+         $e->munNacimiento_id = $request->munNacimiento_id;
          $e->foto = $name;
          $e->save();
          return redirect('/student/');
@@ -61,39 +79,48 @@ class StudentController extends Controller
      */
     public function show($id)
     {
-       /// return "respondiendo desde".$id;
-       $student=Estudiante::find($id);
-      //return $student;
-       return view('student.show', compact('student'));
+        $student = Estudiante::where('nombres', $id)
+               ->orderBy('apellidos', 'desc')               
+               ->get();
+                return view('student.index', compact('student'));
     }
+
 
     public function mostrar(Request $request, $id){
 
         if($request->ajax()){
             $municipios=municipio::municipios($id);
             return response()->json($municipios);
-        }
-       // return "responde desde mostrar".$id;
+        }   
     }
 
-        /*
-    public function getMunicipios(Request $request, $id){
+
+    public function mostrarGenero(Request $request, $id){
+
         if($request->ajax()){
-            $municipios=municipio::municipios($id);
-            return response()->json($municipios);
+            $generos=genero::generos($id);
+            return response()->json($generos);
         }
+    }
+    
+    public function mostrarDoc(Request $request, $id){
 
-    }*/
-
-    /**
+        if($request->ajax()){
+            $documentos=documento::documentos($id);
+            return response()->json($documentos);
+        }
+    }
+    
+     /**
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Estudiante $student)
     {
-        //
+        $documento=documento::all();
+        return view('student.edit', compact('student', 'documento'));
     }
 
     /**
@@ -103,9 +130,11 @@ class StudentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Estudiante $student)
     {
-        //
+        $student->fill($request->all());
+        $student->save();
+        return back();
     }
 
     /**
